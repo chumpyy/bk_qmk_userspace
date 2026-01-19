@@ -230,7 +230,6 @@ combo_t key_combos[] = {
     COMBO(cb_c_v, C(KC_V)),
     COMBO(cb_x_c, G(KC_C)),
     COMBO(cb_z_x, C(KC_X)),
-    COMBO(cb_l_semi, S(KC_SCLN)),
     COMBO(cb_tab_q, S(KC_GRAVE)),
     COMBO(cb_q_r, KC_ESC)
 };

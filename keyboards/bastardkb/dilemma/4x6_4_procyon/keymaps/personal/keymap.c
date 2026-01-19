@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-  KC_KB_VOLUME_UP,LCG(KC_1),LCG(KC_2),LCG(KC_3),LCG(KC_4),LCG(KC_5),KC_F6, _______, LCA(KC_UP), _______, _______, _______,
+  KC_KB_VOLUME_UP,LCG(KC_1),LCG(KC_2),LCG(KC_3),LCG(KC_4),LCG(KC_5),KC_F6, _______, LCA(KC_UP), _______, _______, QK_BOOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        G(KC_G), G(KC_1),  G(KC_2), G(KC_3), G(KC_4), G(KC_5),   XXXXXXX, LSG(KC_LEFT), LCA(KC_DOWN), LSG(KC_RIGHT), KC_RGUI, KC_RGUI,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤

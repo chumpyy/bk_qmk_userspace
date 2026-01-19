@@ -59,6 +59,19 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+// Tap Dance
+enum {
+    TD_0,
+    TD_1,
+    TD_2
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_0] = ACTION_TAP_DANCE_DOUBLE(S(KC_F3), KC_LGUI), // (x, y) tap once for x, tap twice for y
+    [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
+    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL)
+};
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
@@ -133,23 +146,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-// Tap Dance
-
-// Tap Dance declarations
-enum {
-    TD_0,
-    TD_1,
-    TD_2
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_0] = ACTION_TAP_DANCE_DOUBLE(S(KC_F3), KC_LGUI), // (x, y) tap once for x, tap twice for y
-    [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
-    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL)
-};
-
 // combos
-enum {
+/*enum combos {
     cb_f_d,
     cb_w_d,
     cb_d_s,
@@ -177,7 +175,7 @@ enum {
     cb_l_semi,
     cb_tab_q,
     cb_q_r
-}
+}*/
 
 const uint16_t PROGMEM cb_f_d[] = {KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM cb_w_d[] = {KC_W, KC_R, COMBO_END};

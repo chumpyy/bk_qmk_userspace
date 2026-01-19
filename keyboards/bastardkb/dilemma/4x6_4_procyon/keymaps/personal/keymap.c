@@ -46,8 +46,8 @@ enum dilemma_keymap_layers {
 #define T_G_X LGUI_T(KC_X)
 #define T_G_ENT LGUI_T(KC_ENT)
 
-//#define T_CS_CAPS LCS_T(KC_CAPS)
-#define T_CS_CAPS LCTL_T(CW_TOGG) //caps word
+#define T_CS_CAPS LCS_T(KC_CAPS)
+// #define T_CS_CAPS LCTL_T(CW_TOGG) //caps word
 
 #define PT_Z LT(LAYER_POINTER, KC_Z)
 #define PT_SLSH LT(LAYER_POINTER, KC_SLSH)

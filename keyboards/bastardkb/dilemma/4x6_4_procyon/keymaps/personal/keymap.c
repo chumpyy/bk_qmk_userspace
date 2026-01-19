@@ -201,7 +201,6 @@ const uint16_t PROGMEM cb_f_g_l3[] = {KC_F, KC_G, LT(LAYER_THREE, KC_LGUI), COMB
 const uint16_t PROGMEM cb_c_v[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM cb_x_c[] = {G(KC_X), KC_C, COMBO_END};
 const uint16_t PROGMEM cb_z_x[] = {C(KC_Z), G(KC_X), COMBO_END};
-const uint16_t PROGMEM cb_l_semi[] = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM cb_tab_q[] = {A(KC_TAB), KC_Q, COMBO_END};
 const uint16_t PROGMEM cb_q_r[] = {KC_Q, KC_R, COMBO_END};
 

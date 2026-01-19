@@ -71,7 +71,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
     [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL)
 };
-a
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(

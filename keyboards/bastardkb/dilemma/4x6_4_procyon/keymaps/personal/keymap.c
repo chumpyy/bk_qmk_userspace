@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, KC_F2,   C(KC_F5),G(KC_E), LCA(KC_R),C(KC_T),  C(KC_Y), KC_HOME, KC_UP,   KC_END, KC_NO, S(KC_BSLS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       L(KC_LSFT), C(KC_A), C(KC_S), S(KC_F3), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
+       C(KC_LSFT), C(KC_A), C(KC_S), S(KC_F3), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, KC_LSFT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯

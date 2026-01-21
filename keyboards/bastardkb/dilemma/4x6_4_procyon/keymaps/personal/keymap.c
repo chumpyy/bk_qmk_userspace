@@ -60,19 +60,17 @@ enum dilemma_keymap_layers {
 #endif // !POINTING_DEVICE_ENABLE
 
 // Tap Dance
-enum {
+/*enum {
     TD_0,
     TD_1,
-    TD_2,
-    TD_3_BOOT
+    TD_2
 };
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_0] = ACTION_TAP_DANCE_DOUBLE(S(KC_F3), KC_LGUI), // (x, y) tap once for x, tap twice for y
     [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
-    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL),
-    [TD_3_BOOT] = ACTION_TAP_DANCE_DOUBLE(QK_BOOT, KC_LSFT)
-};
+    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL)
+};*/
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -96,11 +94,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, KC_F2,   C(KC_F5),G(KC_E), LCA(KC_R),C(KC_T),  C(KC_Y), KC_HOME, KC_UP,   KC_END, KC_NO, S(KC_BSLS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, TD(TD_1), TD(TD_2), TD(TD_0), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
+       L(KC_LSFT), C(KC_A), C(KC_S), S(KC_F3), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       TD(TD_3_BOOT), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, TD(TD_3_BOOT),
+       KC_LSFT, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, KC_LSFT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                         _______, XXXXXXX, KC_NO,   _______,    KC_LSFT,   KC_BSPC, XXXXXXX, KC_LGUI
+                         QK_BOOT, XXXXXXX, KC_NO,   _______,    KC_LSFT,   KC_BSPC, XXXXXXX, KC_LGUI
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯
   ),
 
@@ -114,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, S(KC_SLSH), KC_NO, KC_NO,  S(KC_6), KC_6,       S(KC_6), S(KC_SLSH),KC_COMM,KC_DOT, KC_SLSH, KC_BSLS,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                         KC_LGUI, XXXXXXX, KC_BSPC, L_3,        _______, KC_NO,   XXXXXXX, _______
+                         KC_LGUI, XXXXXXX, KC_BSPC, L_3,        _______, KC_NO,   XXXXXXX, QK_BOOT
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯
   ),
 

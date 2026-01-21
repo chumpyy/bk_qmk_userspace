@@ -63,8 +63,65 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+enum custom_keycodes {
+    TH_CA_S = SAFE_RANGE,
+    TH_CS_C,
+    TH_SF3_G
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TH_CA_S:
+            if (record->tap.count && record->event.pressed) {
+                // Tapped: send Ctrl+A
+                tap_code16(LCTL(KC_A));
+                return false;
+            } else if (record->event.pressed) {
+                // Held: register Shift
+                register_code(KC_LSFT);
+                return false;
+            } else {
+                // Released: unregister Shift
+                unregister_code(KC_LSFT);
+                return false;
+            }
+            break;
+     case TH_CS_C:
+            if (record->tap.count && record->event.pressed) {
+                // Tapped: send Ctrl+A
+                tap_code16(LCTL(KC_S));
+                return false;
+            } else if (record->event.pressed) {
+                // Held: register Shift
+                register_code(KC_LCTL);
+                return false;
+            } else {
+                // Released: unregister Shift
+                unregister_code(KC_LCTL);
+                return false;
+            }
+            break;
+     case TH_SF3_G:
+            if (record->tap.count && record->event.pressed) {
+                // Tapped: send Ctrl+A
+                tap_code16(LSFT(KC_F3));
+                return false;
+            } else if (record->event.pressed) {
+                // Held: register Shift
+                register_code(KC_LGUI);
+                return false;
+            } else {
+                // Released: unregister Shift
+                unregister_code(KC_LGUI);
+                return false;
+            }
+            break;
+    }
+    return true;
+}
+
 // Tap Dance
-enum {
+/*enum {
     TD_0 = 0,
     TD_1,
     TD_2,
@@ -133,7 +190,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
     }
     return true;
-}
+}*/
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -157,9 +214,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, KC_F2,   C(KC_F5),G(KC_E), LCA(KC_R),C(KC_T),  C(KC_Y), KC_HOME, KC_UP,   KC_END, KC_NO, S(KC_BSLS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, TD(TD_0), TD(TD_1), TD(TD_2), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
+       _______, TH_CA_S, TH_CS_C, TH_SF3_G, C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
- TD(TD_3_BOOT), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, TD(TD_3_BOOT),
+       QK_BOOT, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, QK_BOOT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          _______, XXXXXXX, KC_NO,   _______,    KC_LSFT,   KC_BSPC, XXXXXXX, KC_LGUI
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯

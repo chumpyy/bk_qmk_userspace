@@ -63,13 +63,15 @@ enum dilemma_keymap_layers {
 enum {
     TD_0,
     TD_1,
-    TD_2
+    TD_2,
+    TD_3_BOOT
 };
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_0] = ACTION_TAP_DANCE_DOUBLE(S(KC_F3), KC_LGUI), // (x, y) tap once for x, tap twice for y
     [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
-    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL)
+    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL),
+    [TD_3_BOOT] = ACTION_TAP_DANCE_DOUBLE(QK_BOOT, KC_LSFT)
 };
 
 // clang-format off
@@ -96,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, TD(TD_1), TD(TD_2), TD(TD_0), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       QK_BOOT, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, QK_BOOT,
+       TD(TD_3_BOOT), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, TD(TD_3_BOOT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          _______, XXXXXXX, KC_NO,   _______,    KC_LSFT,   KC_BSPC, XXXXXXX, KC_LGUI
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯

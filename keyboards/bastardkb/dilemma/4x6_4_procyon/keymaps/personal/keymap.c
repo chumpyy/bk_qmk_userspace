@@ -49,6 +49,10 @@ enum dilemma_keymap_layers {
 #define T_CS_CAPS LCS_T(KC_CAPS)
 // #define T_CS_CAPS LCTL_T(CW_TOGG) //caps word
 
+#define T_G_S_F3 MT(MOD_LGUI, S(KC_F3))
+#define T_S_C_A MT(MOD_LSFT, LCTL(KC_A))
+#define T_C_C_S MT(MOD_LCTL, LCTL(KC_S))
+
 #define PT_Z LT(LAYER_POINTER, KC_Z)
 #define PT_SLSH LT(LAYER_POINTER, KC_SLSH)
 
@@ -60,7 +64,7 @@ enum dilemma_keymap_layers {
 #endif // !POINTING_DEVICE_ENABLE
 
 // Tap Dance
-enum {
+/*enum {
     TD_0,
     TD_1,
     TD_2
@@ -70,7 +74,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_0] = ACTION_TAP_DANCE_DOUBLE(S(KC_F3), KC_LGUI), // (x, y) tap once for x, tap twice for y
     [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
     [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL)
-};
+};*/
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -94,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, KC_F2,   C(KC_F5),G(KC_E), LCA(KC_R),C(KC_T),  C(KC_Y), KC_HOME, KC_UP,   KC_END, KC_NO, S(KC_BSLS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, TD(TD_1), TD(TD_2), TD(TD_0), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
+       _______, T_S_C_A, T_C_C_S, T_G_S_F3, C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        QK_BOOT, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, QK_BOOT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯

@@ -49,10 +49,6 @@ enum dilemma_keymap_layers {
 #define T_CS_CAPS LCS_T(KC_CAPS)
 // #define T_CS_CAPS LCTL_T(CW_TOGG) //caps word
 
-// #define T_S_C_A MT(MOD_LSFT, LCTL(KC_A))
-// #define T_C_C_S MT(MOD_LCTL, LCTL(KC_S))
-// #define T_G_S_F3 MT(MOD_LGUI, S(KC_F3))
-
 #define PT_Z LT(LAYER_POINTER, KC_Z)
 #define PT_SLSH LT(LAYER_POINTER, KC_SLSH)
 
@@ -63,134 +59,20 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-enum custom_keycodes {
-    TH_CA_S = SAFE_RANGE,
-    TH_CS_C,
-    TH_SF3_G
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case TH_CA_S:
-            if (record->tap.count && record->event.pressed) {
-                // Tapped: send Ctrl+A
-                tap_code16(LCTL(KC_A));
-                return false;
-            } else if (record->event.pressed) {
-                // Held: register Shift
-                register_code(KC_LSFT);
-                return false;
-            } else {
-                // Released: unregister Shift
-                unregister_code(KC_LSFT);
-                return false;
-            }
-            break;
-     case TH_CS_C:
-            if (record->tap.count && record->event.pressed) {
-                // Tapped: send Ctrl+A
-                tap_code16(LCTL(KC_S));
-                return false;
-            } else if (record->event.pressed) {
-                // Held: register Shift
-                register_code(KC_LCTL);
-                return false;
-            } else {
-                // Released: unregister Shift
-                unregister_code(KC_LCTL);
-                return false;
-            }
-            break;
-     case TH_SF3_G:
-            if (record->tap.count && record->event.pressed) {
-                // Tapped: send Ctrl+A
-                tap_code16(LSFT(KC_F3));
-                return false;
-            } else if (record->event.pressed) {
-                // Held: register Shift
-                register_code(KC_LGUI);
-                return false;
-            } else {
-                // Released: unregister Shift
-                unregister_code(KC_LGUI);
-                return false;
-            }
-            break;
-    }
-    return true;
-}
-
 // Tap Dance
-/*enum {
-    TD_0 = 0,
+enum {
+    TD_0,
     TD_1,
     TD_2,
-    TD_3_BOOT,
+    TD_3_BOOT
 };
-
-typedef struct {
-    uint16_t tap;
-    uint16_t hold;
-    uint16_t held;
-} tap_dance_tap_hold_t;
-
-void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
-    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
-
-    if (state->pressed) {
-        if (state->count == 1
-#ifndef PERMISSIVE_HOLD
-            && !state->interrupted
-#endif
-        ) {
-            register_code16(tap_hold->hold);
-            tap_hold->held = tap_hold->hold;
-        } else {
-            register_code16(tap_hold->tap);
-            tap_hold->held = tap_hold->tap;
-        }
-    }
-}
-
-void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
-    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
-
-    if (tap_hold->held) {
-        unregister_code16(tap_hold->held);
-        tap_hold->held = 0;
-    }
-}
-
-#define ACTION_TAP_DANCE_TAP_HOLD(tap, hold)                                        \
-    {                                                                               \
-        .fn        = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, \
-        .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}),               \
-    }
 
 tap_dance_action_t tap_dance_actions[] = {
-     [TD_0] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_A), KC_LSFT),
-     [TD_1] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_S), KC_LCTL),
-     [TD_2] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_F3), KC_LGUI),
-     [TD_3_BOOT] = ACTION_TAP_DANCE_DOUBLE(QK_BOOT, KC_LSFT)
+    [TD_0] = ACTION_TAP_DANCE_DOUBLE(S(KC_F3), KC_LGUI), // (x, y) tap once for x, tap twice for y
+    [TD_1] = ACTION_TAP_DANCE_DOUBLE(C(KC_A), KC_LSFT),
+    [TD_2] = ACTION_TAP_DANCE_DOUBLE(C(KC_S), KC_LCTL),
+    [TD_3_BOOT] = ACTION_TAP_DANCE_DOUBLE(QK_BOOT, KC_LSFT)
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    tap_dance_action_t *action;
-    tap_dance_state_t* state;
-
-    switch (keycode) {
-        case TD(TD_0):
-        case TD(TD_1):
-        case TD(TD_2):
-            action = tap_dance_get(QK_TAP_DANCE_GET_INDEX(keycode));
-            state = tap_dance_get_state(QK_TAP_DANCE_GET_INDEX(keycode));
-            if (!record->event.pressed && state != NULL && state->count && !state->finished) {
-                tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
-                tap_code16(tap_hold->tap);
-            }
-    }
-    return true;
-}*/
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -214,9 +96,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        _______, KC_F2,   C(KC_F5),G(KC_E), LCA(KC_R),C(KC_T),  C(KC_Y), KC_HOME, KC_UP,   KC_END, KC_NO, S(KC_BSLS),
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, TH_CA_S, TH_CS_C, TH_SF3_G, C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
+       _______, TD(TD_1), TD(TD_2), TD(TD_0), C(KC_F), KC_F3,    KC_DEL, KC_LEFT, KC_DOWN, KC_RIGHT, KC_DEL, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       QK_BOOT, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, QK_BOOT,
+       TD(TD_3_BOOT), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), KC_F12,    KC_PGUP,LCS(KC_LEFT),_______,LCS(KC_RIGHT),KC_PGDN, TD(TD_3_BOOT),
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                          _______, XXXXXXX, KC_NO,   _______,    KC_LSFT,   KC_BSPC, XXXXXXX, KC_LGUI
   //                    ╰───────────────────────────────────╯ ╰───────────────────────────────────╯

@@ -112,7 +112,7 @@ void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
 
 tap_dance_action_t tap_dance_actions[] = {
      [TD_0] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_A), KC_LSFT),
-     [TD_1] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_S), KC_LCTRL),
+     [TD_1] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_S), KC_LCTL),
      [TD_2] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_F3), KC_LGUI),
      [TD_3_BOOT] = ACTION_TAP_DANCE_DOUBLE(QK_BOOT, KC_LSFT)
 };

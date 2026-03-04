@@ -178,17 +178,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 }*/
 
 const uint16_t PROGMEM cb_f_d[] = {KC_F, KC_D, COMBO_END};
-const uint16_t PROGMEM cb_w_d[] = {KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM cb_w_e_r[] = {KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM cb_d_s[] = {KC_D, KC_S, COMBO_END};
-const uint16_t PROGMEM cb_s_f[] = {KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM cb_s_d_f[] = {KC_S, KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM cb_q_w[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM cb_a_f[] = {KC_A, KC_F, COMBO_END};
 const uint16_t PROGMEM cb_home_up[] = {KC_HOME, KC_UP, COMBO_END};
 const uint16_t PROGMEM cb_up_end[] = {KC_UP, KC_END, COMBO_END};
 const uint16_t PROGMEM cb_j_k[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM cb_k_l[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM cb_u_o[] = {KC_U, KC_O, COMBO_END};
-const uint16_t PROGMEM cb_u_o_i[] = {KC_U, KC_O, KC_I, COMBO_END};
+//const uint16_t PROGMEM cb_u_o[] = {KC_U, KC_O, COMBO_END};
+const uint16_t PROGMEM cb_j_k_l[] = {KC_J, KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM cb_u_i_o[] = {KC_U, KC_O, KC_I, COMBO_END};
 const uint16_t PROGMEM cb_m_comm[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM cb_comm_dot[] = {KC_COMM, T_G_DOT, COMBO_END};
 const uint16_t PROGMEM cb_f_d_s[] = {KC_F, KC_D, KC_S, COMBO_END};
@@ -206,17 +207,18 @@ const uint16_t PROGMEM cb_q_r[] = {KC_Q, KC_R, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(cb_f_d, S(KC_MINUS)),
-    COMBO(cb_w_d, KC_EQUAL),
+    COMBO(cb_w_e_r, KC_EQUAL),
     COMBO(cb_d_s, KC_MINUS),
-    COMBO(cb_s_f, S(KC_EQUAL)),
+    COMBO(cb_s_d_f, S(KC_EQUAL)),
     COMBO(cb_q_w, KC_GRAVE),
     COMBO(cb_a_f, KC_ESC),
     COMBO(cb_home_up, KC_LBRC),
     COMBO(cb_up_end, KC_RBRC),
     COMBO(cb_j_k, S(KC_9)),
     COMBO(cb_k_l, S(KC_0)),
-    COMBO(cb_u_o, KC_LBRC),
-    COMBO(cb_u_o_i, KC_RBRC),
+    //COMBO(cb_u_o, KC_LBRC),
+    COMBO(cb_j_k_l, KC_LBRC),
+    COMBO(cb_u_i_o, KC_RBRC),
     COMBO(cb_m_comm, S(KC_LBRC)),
     COMBO(cb_comm_dot, S(KC_RBRC)),
     COMBO(cb_f_d_s, KC_ESC),
